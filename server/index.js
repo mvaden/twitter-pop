@@ -12,9 +12,7 @@ const BearerToken = process.env.BEARER_TOKEN;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-    //   res.send({ express: "hello from express" });
-    
+app.get("/", (req, res) => {    
     const getTweets = async(id) => {
         const endpointUrl = "https://api.twitter.com/1.1/search/tweets.json";
         const params = {
@@ -29,49 +27,38 @@ app.get("/", (req, res) => {
             }
         }
 
-        const twitterResponse = await needle ("get", endpointUrl, params, headers);
+        const response = await needle ("get", endpointUrl, params, headers);
 
         if (res.statusCode !== 200) {
             if (res.statusCode === 403) {
-                res.status(403).send(twitterResponse.body);
-                console.error("Return 403");
+                res.status(403).send(response.body);
+                console.error("Return 403.");
             }
             else {
-                console.log("Error was not 403")
+                console.log("Error was not 403.");
             }
         }
 
-        if (twitterResponse.data) {
-            return twitterResponse.data
+        if (response.body) {
+            return response.body
         }
         else {
             console.log("Request was unsuccessful.")
         }
-        
-        // for (const [i, text] of Object.entries(twitterResponse.body.statuses)) {
-        //     console.log(`${i} - text: ${text.text}`);
-        // };
+        // console.log(response.body.statuses);
 
-        // for (const [i, user] of Object.entries(twitterResponse.body.statuses)) {
-        //     console.log(`${i} - usernames: ${user.user.screen_name}`);
-        // };
+        const result = Object.values(response.body.statuses).map(item => ({
+            "text": item.text,
+            "screen_name": item.user.screen_name,
+            "avatar": item.user.profile_background_image_url,
+            "hashtags": item.user.entities.hashtags,
+            // "url": item.entities.urls
+        }));
 
-        // for (const [i, avatar] of Object.entries(twitterResponse.body.statuses)) {
-        //     console.log(`${i} - avatars: ${avatar.user.profile_background_image_url}`);
-        // };
+        console.log(result)
 
-        // for (const [i, hashtag] of Object.entries(twitterResponse.body.statuses)) {
-        //     console.log(`${i} - hashtags: ${hashtag.user.entities.hashtags}`);
-        // };
-
-        // for (const [i, url] of Object.entries(twitterResponse.body.statuses)) {
-        //     console.log(`${i} - urls: ${url.user.entities.description.urls[1].url}`);
-        // };
-
-        res.send({"sending this body": twitterResponse.body.statuses})
-        console.log()
+        res.status(200).send({"sending this body": result})  
     }
-    console.log("Get Tweets: ", getTweets());
 });
 
 app.listen(port, () => console.log(`Express is listening on port ${port}`));
