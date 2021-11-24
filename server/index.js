@@ -4,13 +4,17 @@ dotenv.config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const needle = require("needle");
+const cors = require("cors");
 
 const app = express();
 const port = process.env.PORT;
 const BearerToken = process.env.BEARER_TOKEN;
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(bodyParser({ extended: true }));
+app.use(cors({
+    origin: "*"
+}));
 
 const getTweets = async(req, res) => {
     const endpointUrl = "https://api.twitter.com/1.1/search/tweets.json";
@@ -55,6 +59,9 @@ const getTweets = async(req, res) => {
     }
 }
 
+app.post('/', (req, res) => {
+    console.log("Request body: ", req.body);
+})
 
 app.get("/", getTweets);
 
