@@ -1,0 +1,61 @@
+section {
+    border: 3px solid #e6dcdc;
+    border-radius: 7px;
+}
+
+a {
+    text-decoration: none;
+    color: #7fc4db;
+}
+
+.div__statuses-wrapper {
+    background-color: #fff;
+    display: flex;
+    padding: 1.5rem;
+}
+
+.btn__load {
+    background: transparent;
+    padding: 1rem;
+    border: none;
+    width: 69.5%;
+    color: #7fc4db;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.btn__load:hover {
+    cursor: pointer;
+}
+
+.div__btn-load-wrapper {
+    background: #fff;
+    text-align: center; 
+}
+
+.div__avatar-wrapper {
+    padding-right: 1rem;
+}
+
+.span__text-hashtag {
+    padding: 0.75rem;
+    color: #39798f;
+    background-color: #d0edf7;
+    border-radius: 2.5rem;
+    margin-right: 0.75rem;
+    font-weight: 800;
+}
+
+.div__screen-name {
+    font-weight: 700;
+}
+
+.p__text-tweet {
+    line-height: 1.5rem;
+}
+
+.div__button-load-wrapper {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #fff;
+}

@@ -1,34 +1,11 @@
-.div__col-1 {
-    margin-right: 0.5rem; 
-    width: 70%;   
-}
-
-.div__col-2 {
-    margin-left: 0.5rem;
-    width: 30%;
-}
-
-.div__main-wrapper {
+.div__components-wrapper {
     display: flex;
 }
 
-.input__keyword-search {
-    height: 2rem;
-    width: -moz-available;
-    padding-left: 1rem;
-    border: 3px solid #e6dcdc;
-    border-radius: 7px;
+.col-1 {
+    width: 70%;
 }
 
-.div__wrapper-hashtag {
-    background-color: #fff;
-    padding: 1rem;
-    border: 3px solid #e6dcdc;
-    border-radius: 7px;
-}
-
-.h2 {
-    font-size: 18px;
-    font-weight: 600;
-    margin: 0; 
+.col-2 {
+    width: 30%;
 }

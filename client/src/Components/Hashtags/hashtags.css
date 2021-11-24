@@ -1,0 +1,16 @@
+.h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0; 
+}
+
+.div__col-2 {
+    margin-left: 0.5rem;
+}
+
+.div__wrapper-hashtag {
+    background-color: #fff;
+    padding: 1rem;
+    border: 3px solid #e6dcdc;
+    border-radius: 7px;
+}

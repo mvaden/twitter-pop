@@ -1,0 +1,11 @@
+.div__col-1 {
+    margin-right: 0.5rem;
+}
+
+.input__keyword-search {
+    height: 2rem;
+    width: 100%;
+    text-indent: 1rem;
+    border: 3px solid #e6dcdc;
+    border-radius: 7px;
+}
